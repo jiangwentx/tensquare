@@ -1,0 +1,13 @@
+server:
+  port: 9001 #指定端口
+spring:
+  application:
+    name: tensquare-base #指定微服务的名称. 注意,英文字母之间只能用-,不能用下划线连接
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.198.130:3306/tensquare_base?characterEncoding=UTF8
+    username: root
+    password: root
+  jpa:
+    database: mysql  #数据库的类型为mysql
+    show-sql: true   # 在控制台打印sql语句
