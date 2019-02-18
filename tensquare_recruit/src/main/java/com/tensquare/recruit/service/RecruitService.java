@@ -12,6 +12,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 
+import entity.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,10 +20,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import util.IdWorker;
+
 
 import com.tensquare.recruit.dao.RecruitDao;
 import com.tensquare.recruit.pojo.Recruit;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 服务层
@@ -38,6 +40,16 @@ public class RecruitService {
 	
 	@Autowired
 	private IdWorker idWorker;
+
+	//推荐职位
+	public List<Recruit> recommend(){
+		return recruitDao.findTop6ByStateOrderByCreatetimeDesc("2");
+	}
+
+	//最新职位
+	public List<Recruit> newList(){
+		return recruitDao.findTop6ByStateNotOrderByCreatetimeDesc("0");
+	}
 
 	/**
 	 * 查询全部列表
