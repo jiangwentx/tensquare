@@ -1,4 +1,5 @@
 package com.tensquare.question.controller;
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 
@@ -29,8 +30,25 @@ public class ProblemController {
 
 	@Autowired
 	private ProblemService problemService;
-	
-	
+
+	@RequestMapping(value="/newlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
+	public Result newList(@PathVariable String labelid,@PathVariable int page,@PathVariable int size){
+		Page<Problem> pageData = problemService.newList(labelid, page, size);
+		return new Result(true,StatusCode.OK,"查询成功",new PageResult<Problem>(pageData.getTotalElements(),pageData.getContent()));
+	}
+
+	@RequestMapping(value="/hotlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
+	public Result hotList(@PathVariable String labelid,@PathVariable int page,@PathVariable int size){
+		Page<Problem> pageData = problemService.hotList(labelid, page, size);
+		return new Result(true,StatusCode.OK,"查询成功",new PageResult<Problem>(pageData.getTotalElements(),pageData.getContent()));
+	}
+
+	@RequestMapping(value="/waitlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
+	public Result waitList(@PathVariable String labelid,@PathVariable int page,@PathVariable int size){
+		Page<Problem> pageData = problemService.waitList(labelid, page, size);
+		return new Result(true,StatusCode.OK,"查询成功",new PageResult<Problem>(pageData.getTotalElements(),pageData.getContent()));
+	}
+
 	/**
 	 * 查询全部数据
 	 * @return

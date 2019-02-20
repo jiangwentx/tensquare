@@ -16,6 +16,7 @@ import entity.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,25 @@ public class ProblemService {
 	
 	@Autowired
 	private IdWorker idWorker;
+
+
+	public Page<Problem> newList(String labelid, int page,int size){   //page是当前页码，size是每页大小
+		//分页对象
+		Pageable pageable = PageRequest.of(page-1,size);
+		return problemDao.newList(labelid, pageable);
+	}
+
+	public Page<Problem> hotList(String labelid, int page,int size){   //page是当前页码，size是每页大小
+		//分页对象
+		Pageable pageable = PageRequest.of(page-1,size);
+		return problemDao.hotList(labelid, pageable);
+	}
+
+	public Page<Problem> waitList(String labelid, int page,int size){   //page是当前页码，size是每页大小
+		//分页对象
+		Pageable pageable = PageRequest.of(page-1,size);
+		return problemDao.waitList(labelid, pageable);
+	}
 
 	/**
 	 * 查询全部列表

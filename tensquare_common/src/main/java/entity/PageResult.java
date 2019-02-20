@@ -18,8 +18,8 @@ public class PageResult<T> {
 
     public PageResult(Long total, List<T> rows) {
         super();
-        this.total = total;
-        this.rows = rows;
+        this.total = total;  //记录总条数
+        this.rows = rows;   //按当前页和每页大小得到的数据
     }
 
     public Long getTotal() {
