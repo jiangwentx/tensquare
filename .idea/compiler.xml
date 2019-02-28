@@ -12,6 +12,7 @@
         <module name="tensquare_gathering" />
         <module name="tensquare_question" />
         <module name="tensquare_recruit" />
+        <module name="tensquare_searching" />
         <module name="tensquare_spit" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,8 @@
       <module name="tensquare_qa" target="1.8" />
       <module name="tensquare_question" target="1.8" />
       <module name="tensquare_recruit" target="1.8" />
+      <module name="tensquare_search" target="1.8" />
+      <module name="tensquare_searching" target="1.8" />
       <module name="tensquare_spit" target="1.8" />
     </bytecodeTargetLevel>
   </component>
