@@ -11,9 +11,12 @@
         <module name="tensquare_common" />
         <module name="tensquare_gathering" />
         <module name="tensquare_question" />
+        <module name="tensquare_rabbitmqtest" />
         <module name="tensquare_recruit" />
         <module name="tensquare_searching" />
+        <module name="tensquare_sms" />
         <module name="tensquare_spit" />
+        <module name="tensquare_user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,10 +27,13 @@
       <module name="tensquare_parent" target="1.8" />
       <module name="tensquare_qa" target="1.8" />
       <module name="tensquare_question" target="1.8" />
+      <module name="tensquare_rabbitmqtest" target="1.8" />
       <module name="tensquare_recruit" target="1.8" />
       <module name="tensquare_search" target="1.8" />
       <module name="tensquare_searching" target="1.8" />
+      <module name="tensquare_sms" target="1.8" />
       <module name="tensquare_spit" target="1.8" />
+      <module name="tensquare_user" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
