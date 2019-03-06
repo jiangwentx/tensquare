@@ -11,3 +11,9 @@ spring:
   jpa:
     database: mysql  #数据库的类型为mysql
     show-sql: true   # 在控制台打印sql语句
+eureka:
+client:
+service-url:
+defaultZone: http://localhost:6868/eureka/
+instance:
+prefer-ip-address: true
