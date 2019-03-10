@@ -1,5 +1,5 @@
 server:
-  port: 9001 #指定端口
+  port: 9201 #指定端口
 spring:
   application:
     name: tensquare-base #指定微服务的名称. 注意,英文字母之间只能用-,不能用下划线连接
@@ -10,10 +10,10 @@ spring:
     password: root
   jpa:
     database: mysql  #数据库的类型为mysql
-    show-sql: true   # 在控制台打印sql语句
+    show-sql: true
 eureka:
-client:
-service-url:
-defaultZone: http://localhost:6868/eureka/
-instance:
-prefer-ip-address: true
+  client:
+    service-url:
+     defaultZone: http://127.0.0.1:6868/eureka/
+  instance:
+    prefer-ip-address: true

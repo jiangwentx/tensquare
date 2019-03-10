@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import com.netflix.discovery.converters.Auto;
+import com.tensquare.question.client.BaseClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,6 +39,18 @@ public class ProblemController {
 
 	@Autowired
 	private HttpServletRequest request;
+
+	@Autowired
+	private BaseClient baseClient;
+
+	/*
+	* 这里调用不是本模块的，是base的模块
+	* */
+	@RequestMapping(value="/label/{id}",method = RequestMethod.GET)
+	public Result findByLabelId(@PathVariable String id){
+		Result result = baseClient.findById(id);
+		return result;
+	}
 
 	@RequestMapping(value="/newlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
 	public Result newList(@PathVariable String labelid,@PathVariable int page,@PathVariable int size){
