@@ -1,5 +1,5 @@
 server:
-  port: 9201 #指定端口
+  port: 9001 #指定端口
 spring:
   application:
     name: tensquare-base #指定微服务的名称. 注意,英文字母之间只能用-,不能用下划线连接

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.dialect.FirebirdDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -45,6 +46,14 @@ public class UserController {
 	private JwtUtil jwtUtil;
 
 	/*
+	* 更新好友粉丝数和用户关注数
+	* */
+	@RequestMapping(value="/{userid}/{friendid}/{x}",method = RequestMethod.PUT)
+	public void updatefanscountandfollowcount(@PathVariable int x,@PathVariable String userid,@PathVariable String friendid){
+		userService.updatefanscountandfollowcount(x,userid, friendid);
+	}
+
+	/*
 	* 用户登录
 	* */
 	@RequestMapping(value="/login",method = RequestMethod.POST)
@@ -61,6 +70,7 @@ public class UserController {
 
 		return new Result(true,StatusCode.OK,"登录成功",map);
 	}
+
 
 	/*
 	* 发送短信验证码
@@ -158,6 +168,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
 	public Result delete(@PathVariable String id ){
+		//这里做了权限认证，写在service层里
 		userService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}

@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 
 import com.tensquare.user.dao.UserDao;
 import com.tensquare.user.pojo.User;
+import org.springframework.transaction.annotation.Transactional;
 import utils.JwtUtil;
 
 /**
@@ -134,6 +135,7 @@ public class UserService {
 	 * @param id
 	 */
 	public void deleteById(String id) {
+		//删除用户鉴权，如果拿不到权限删除失败
 		String token = (String) request.getAttribute("claims_admin");
 		if(token==null||"".equals(token)){
 			throw new RuntimeException("权限不足");
@@ -220,4 +222,10 @@ public class UserService {
 		}
 		return null;
 	}
+
+	@Transactional
+    public void updatefanscountandfollowcount(int x, String userid, String friendid) {
+		userDao.updatefanscount(x,friendid);
+		userDao.updatefollowcount(x,userid);
+    }
 }

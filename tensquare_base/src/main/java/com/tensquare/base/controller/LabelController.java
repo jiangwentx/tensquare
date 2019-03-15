@@ -39,7 +39,7 @@ public class LabelController {
      */
     @RequestMapping(value="/{id}",method = RequestMethod.GET)
     public Result<Label> findById(@PathVariable String id){
-        System.out.println("2222222222");
+        System.out.println("3333333333333333");
         return new Result<>(true,StatusCode.OK,"查询成功",labelService.findById(id)); }
     /**
      5.2.3 功能测试
